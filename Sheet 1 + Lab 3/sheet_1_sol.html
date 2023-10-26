@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sheet_1_sol.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="sheet-1-solution">Sheet 1 Solution</h1>
+<p>This <a href="https://www.malavida.com/en/soft/emu8086/download">link</a> has an easy to use 8086 emulator. However, in the coding exercises, you will have to use a real compiler and assembler. The simulation will be on the DOSBox emulator.</p>
+<h2 id="question-1">Question 1</h2>
+<p>State another way to increase the processing power of the CPU other than increasing the frequency.</p>
+<h3 id="solution">Solution</h3>
+<p>There are alot of ways to increase the processing power of the CPU other than increasing the frequency. Some of them are listed below:</p>
+<ol>
+<li>Increasing the number of cores.</li>
+<li>Pipelining. (Fetch and execute at the same time).</li>
+</ol>
+<h2 id="question-2">Question 2</h2>
+<p>Are the following instructions valid? Why? Why not?</p>
+<h3 id="solution">Solution</h3>
+<h4 id="q2a">Q2.A</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AX</span>, <span class="hljs-number">27</span>
+</div></code></pre>
+<p>This is a valid instruction. The Final value of AX will be <em>0x1b</em>, which is <em>27</em> in decimal.</p>
+<h4 id="q2b">Q2.B</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AL</span>, 97F
+</div></code></pre>
+<p>There are a number of issues with this instruction.</p>
+<ol>
+<li>We are trying to fit <code>97F</code>, which is a $4 \times 3 = 12$ bit number into the <code>AL</code> register, which is an 8 bit register. This is not possible.</li>
+<li>There is no suffix for the immediate value. Numbers in commands should be suffixed with <code>h</code> for hexadecimal, <code>d</code> for decimal and <code>b</code> for binary. If no suffix is given, the assembler assumes that the number is in decimal.</li>
+</ol>
+<p>The correct instruction would be</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AX</span>, <span class="hljs-number">97Fh</span>
+</div></code></pre>
+<h4 id="q2c">Q2.C</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">DS</span>, 9BF2
+</div></code></pre>
+<p>This is not a valid instruction. The <code>DS</code> is the <strong>d</strong>ata <strong>s</strong>egment register. Segment registers <strong>Can NOT</strong> be loaded with immediate values. Load the immediate value you want in a general purpose register first, then <code>MOV</code> that value into the desired segment register. Also, any number in assembly should be suffixed according to its base (binary, decimal, or hexadecimal).</p>
+<h4 id="q2d">Q2.D</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CX</span>, <span class="hljs-number">397</span>
+</div></code></pre>
+<p>This is a valid instruction. The final value of <code>CX</code> will be <em>018D</em>, which is <em>397</em> in decimal.</p>
+<h4 id="q2e">Q2.E</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-number">81</span>, <span class="hljs-number">9516</span>
+</div></code></pre>
+<p>This is a valid instruction. This moves 9516 to [81]</p>
+<h4 id="q2f">Q2.F</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CS</span>, <span class="hljs-number">3490</span>
+</div></code></pre>
+<p>This is not a valid instruction. The <code>CS</code> is the <strong>c</strong>ode <strong>s</strong>egment register. Segment registers <strong>Can NOT</strong> be loaded with immediate values. Load the immediate value you want in a general purpose register first, then <code>MOV</code> that value into the desired segment register. Also, any number in assembly should be suffixed according to its base (binary, decimal, or hexadecimal).</p>
+<h4 id="q2g">Q2.G</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">DS</span>, <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<p>This instruction is valid. The starting address of the data segment is now the value in <code>BX</code></p>
+<h4 id="q2h">Q2.H</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">BX</span>,<span class="hljs-built_in">CS</span>
+</div></code></pre>
+<p>This is a valid instruction.</p>
+<h4 id="q2i">Q2.I</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-number">CH</span>, <span class="hljs-built_in">AX</span>
+</div></code></pre>
+<p><code>MOV</code> requries its two operands to be of the same size. <code>CH</code> is an 8 bit register, while <code>AX</code> is a 16 bit register. This instruction is not valid.</p>
+<h4 id="q2j">Q2.J</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AX</span>, 23FB9
+</div></code></pre>
+<p>This is not a valid instruction. The <code>AX</code> register is a 16 bit register. It can not hold a 20 bit number. Besides, any number in assembly should be suffixed according to its base (binary, decimal, or hexadecimal).</p>
+<h4 id="q2k">Q2.K</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CS</span>, <span class="hljs-number">BH</span>
+</div></code></pre>
+<p>This instruction is invalid. While we are using a register to load the segment register, the register used is an 8 bit register. Segment registers are 16 bit registers. The <code>MOV</code> command requires its operands to be of the same size.</p>
+<h4 id="q2l">Q2.L</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AX</span>, <span class="hljs-built_in">DL</span>
+</div></code></pre>
+<p>This instruction is invalid. The <code>MOV</code> command requires its operands to be of the same size.</p>
+<h3 id="q2-summary">Q2 Summary</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Question</th>
+<th style="text-align:center">Validity</th>
+<th style="text-align:center">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">1. Trying to fit a 12 bit number into an 8 bit register. <br> 2. No suffix for the immediate value.</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">1. Trying to load a segment register with an immediate value. <br> 2. No suffix for the immediate value.</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">1. Trying to load a segment register with an immediate value. <br> 2. No suffix for the immediate value.</td>
+</tr>
+<tr>
+<td style="text-align:center">G</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">H</td>
+<td style="text-align:center">Yes</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">I</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">The <code>MOV</code> command requires its operands to be of the same size.</td>
+</tr>
+<tr>
+<td style="text-align:center">J</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">1. Trying to fit a 20 bit number into a 16 bit register. <br> 2. No suffix for the immediate value.</td>
+</tr>
+<tr>
+<td style="text-align:center">K</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">The <code>MOV</code> command requires its operands to be of the same size.</td>
+</tr>
+<tr>
+<td style="text-align:center">L</td>
+<td style="text-align:center">No</td>
+<td style="text-align:center">The <code>MOV</code> command requires its operands to be of the same size.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="question-3">Question 3</h2>
+<p>If an instruction that needs to be fetched is in physical memory location <code>389F2</code> and <code>CS = 2700</code>, does the code segment range include it or not? If not, what value should be assigned to <code>CS</code> if the <code>IP</code> must be = <code>1282</code>?</p>
+<h3 id="required-concepts">Required Concepts</h3>
+<ul>
+<li>The physical address.</li>
+<li>The logical address.</li>
+<li>How to convert from the logical address to the physical address.</li>
+</ul>
+<h3 id="required">Required</h3>
+<ul>
+<li>Can we find the instruction in the code segment?</li>
+<li>If not, what value should be assigned to <code>CS</code> if the <code>IP</code> must be = <code>1282</code>?</li>
+</ul>
+<h3 id="givens">Givens</h3>
+<ul>
+<li>The instruction is in physical memory location <code>389F2</code>.</li>
+<li>The code segment starts at <code>CS = 2700</code>.</li>
+<li>The <code>IP</code> must be = <code>1282</code>.</li>
+</ul>
+<h3 id="solution">Solution</h3>
+<p>The code segment starts at <code>CS = 2700:0000</code> and ends at <code>2700:FFFF</code>. In order to find whether the instruction is in the code segment or not, we need to find the range of the address space of the code segment.</p>
+<p>To calculate the physical address, we perform two operations:</p>
+<ol>
+<li>Multiply the <code>CS</code> by <code>10h</code>. This is equivalent to shifting the CS by 4 bits to the left.</li>
+<li>Add the offset.</li>
+</ol>
+<p>In order to find the range of the <code>CS</code>, we do these operations twice:</p>
+<ol>
+<li>Lower range: <code>(CS * 10h) + 0000 = 270000h</code></li>
+<li>Upper range: <code>(CS * 10h) + FFFF = 36FFFFh</code></li>
+</ol>
+<p>We can clearly see that the instruction located at <code>389F2</code> is not in the code segment address space. Given the current configuration, this instruction will not be executed.</p>
+<p>The second part of the question asks you to fix this problem, given that the <code>IP</code> is equal to <code>1282h</code></p>
+<h3 id="solution">Solution</h3>
+<p>Remember the formula</p>
+<pre><code>Physical address = (CS*10h)+IP
+</code></pre>
+<p>By substituting:</p>
+<pre><code>389F2 = (CS*10h)+1282
+</code></pre>
+<p>Work the math:</p>
+<pre><code>389F2 - 1282 = CS * 10h
+37770        = CS * 10h
+</code></pre>
+<p>Now remember, multiplying by <code>10h</code> is just shifting one whole hexadecimal digit to the <strong>left</strong>. Dividing is just the opposite. Dividing shifts the number one whole digit to the <strong>right</strong> instead.</p>
+<pre><code>3777 = CS
+</code></pre>
+<h3 id="q3-summary">Q3 Summary</h3>
+<ol>
+<li>No.</li>
+<li><code>3777</code></li>
+</ol>
+<h2 id="question-4">Question 4</h2>
+<p>Assume that <code>SP = FF2EH</code>, <code>AX = 3291H</code>, <code>BX = F43CH</code>, and <code>CX = 09</code>. Find the content of the stack and stack pointer after the execution of each of the following instructions:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">AX</span>
+<span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">BX</span>
+<span class="hljs-keyword">POP</span> <span class="hljs-built_in">AX</span>
+<span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">CX</span>
+<span class="hljs-keyword">POP</span> <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<h3 id="required-concepts">Required Concepts</h3>
+<ol>
+<li>Basic stack knowledge.</li>
+<li>Stack pointer rules in <code>x86 assembly</code>.</li>
+</ol>
+<h3 id="required">Required</h3>
+<ul>
+<li>After each instruction, what are the contents of the stack and the stack pointer?</li>
+</ul>
+<h3 id="givens">Givens</h3>
+<ol>
+<li><code>SP = FF2Eh</code></li>
+<li><code>AX = 3291h</code></li>
+<li><code>BX = F43Ch</code></li>
+<li><code>CX = 0009h</code></li>
+<li>Instructions.</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<p>There are two things that we need to know:</p>
+<ol>
+<li>In the memory, the program data and the stack are opposite to each other.
+<ul>
+<li>This is better memory management, allows both the data and the stack to grow in the memory freely as long as they don't collide.</li>
+</ul>
+</li>
+<li>The stack pointer decrements by <code>2</code> with every <code>push</code> and increments by <code>2</code> with every <code>pop</code>. This is because the width of the stack is <code>8-bits</code>, not 16.</li>
+</ol>
+<p>Based on the above information, we can solve this question as follows:</p>
+<h4 id="instruction-1">Instruction 1</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">AX</span> <span class="hljs-comment">; 3291h</span>
+</div></code></pre>
+<ul>
+<li>The stack pointer decrements by 2 when pushing. <code>SP = FF2Eh</code> → <code>SP = FF2Ch</code></li>
+<li>The value is then stored in <code>SS:SP</code>, in little endian.</li>
+</ul>
+<p>Stack contents:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Offset</th>
+<th style="text-align:center">Data</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FF2Eh</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Dh</td>
+<td style="text-align:center">32h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ch</td>
+<td style="text-align:center">91h</td>
+<td style="text-align:center">← SP</td>
+</tr>
+</tbody>
+</table>
+<h4 id="instruction-2">Instruction 2</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">BX</span> <span class="hljs-comment">; F43Ch</span>
+</div></code></pre>
+<ul>
+<li>The stack pointer decrements by 2 when pushing. <code>SP = FF2Ch</code> → <code>SP = FF2Ah</code></li>
+</ul>
+<p>Stack contents:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Offset</th>
+<th style="text-align:center">Data</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FF2Eh</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Dh</td>
+<td style="text-align:center">32h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ch</td>
+<td style="text-align:center">91h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Bh</td>
+<td style="text-align:center">F4h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ah</td>
+<td style="text-align:center">3Ch</td>
+<td style="text-align:center">← SP</td>
+</tr>
+</tbody>
+</table>
+<h4 id="instruction-3">Instruction 3</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">POP</span> <span class="hljs-built_in">AX</span>
+</div></code></pre>
+<ul>
+<li>The stack pointer increments by 2 when popping. <code>SP = FF2Ah</code> → <code>SP = FF2Ch</code></li>
+<li>Value of <code>AX</code> is now <code>F43Ch</code></li>
+</ul>
+<p>Stack contents:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Offset</th>
+<th style="text-align:center">Data</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FF2Eh</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Dh</td>
+<td style="text-align:center">32h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ch</td>
+<td style="text-align:center">91h</td>
+<td style="text-align:center">← SP</td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Bh</td>
+<td style="text-align:center">F4h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ah</td>
+<td style="text-align:center">3Ch</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="instruction-4">Instruction 4</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">CX</span> <span class="hljs-comment">; 0009h</span>
+</div></code></pre>
+<ul>
+<li>The stack pointer decrements by 2 when pushing. <code>SP = FF2Ch</code> → <code>SP = FF2Ah</code></li>
+</ul>
+<p>Stack contents:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Offset</th>
+<th style="text-align:center">Data</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FF2Eh</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Dh</td>
+<td style="text-align:center">32h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ch</td>
+<td style="text-align:center">91h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Bh</td>
+<td style="text-align:center">00h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ah</td>
+<td style="text-align:center">09h</td>
+<td style="text-align:center">← SP</td>
+</tr>
+</tbody>
+</table>
+<h4 id="instruction-5">Instruction 5</h4>
+<pre class="hljs"><code><div><span class="hljs-keyword">POP</span> <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<ul>
+<li>The stack pointer increments by 2 when popping. <code>SP = FF2Ah</code> → <code>SP = FF2Ch</code></li>
+<li>Value of <code>BX</code> is now <code>0009h</code></li>
+</ul>
+<p>Stack contents:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Offset</th>
+<th style="text-align:center">Data</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FF2Eh</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Dh</td>
+<td style="text-align:center">32h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ch</td>
+<td style="text-align:center">91h</td>
+<td style="text-align:center">← SP</td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Bh</td>
+<td style="text-align:center">00h</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">FF2Ah</td>
+<td style="text-align:center">09h</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="question-5">Question 5</h2>
+<p>What is the function of the following code? Can you suggest a better alternative? Why is your alternative better?</p>
+<h3 id="required-concepts">Required Concepts</h3>
+<ul>
+<li>General stack knowledge.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">AX</span>
+<span class="hljs-keyword">PUSH</span> <span class="hljs-built_in">BX</span>
+<span class="hljs-keyword">POP</span> <span class="hljs-built_in">AX</span>
+<span class="hljs-keyword">POP</span> <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<h3 id="solution">Solution</h3>
+<p>Let's see what would the 8086 do in this situation:</p>
+<p>After the first two instruction, the stack will look like this:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Stack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>BL</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>BH</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>AL</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>AH</code></td>
+</tr>
+</tbody>
+</table>
+<p>Now, we pop the top of the stack, which is <code>BL</code> and <code>BH</code> (<code>BX</code>) into <code>AX</code>. Can you see now what this code does?</p>
+<p>This code swaps the contents of <code>AX</code> and <code>BX</code>. A better alternative to this code snippet is to use this command:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">XCHG</span> <span class="hljs-built_in">AX</span>, <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<p>Which does the same functionality with less code size in less clock cycles. Always keep your assembly cheat sheet with you when coding and make sure it has a description of the commands, even if its a small one.</p>
+<h2 id="question-6">Question 6</h2>
+<p>What is the main disadvantage of the stack as temporary storage compared to having a large number of registers inside the CPU?</p>
+<h3 id="solution">Solution</h3>
+<ul>
+<li>The stack resides in the RAM.
+<ul>
+<li>The 8086 is a chip that doesnt have any RAM or ROM.</li>
+<li>This means that the RAM is not on the same IC as the 8086.</li>
+<li>This means much slower access time in comparison with the registers.</li>
+</ul>
+</li>
+</ul>
+<h2 id="question-7">Question 7</h2>
+<p>Find the status of the CF, PF, AF, ZF, and SF for the following operations.</p>
+<h3 id="required-concepts">Required Concepts</h3>
+<ul>
+<li>How to efficiently use your Casio calculator.</li>
+<li>What affects each flag.</li>
+<li>What instructions affect what flags.
+<ul>
+<li>Make sure your cheat sheet includes this information.</li>
+</ul>
+</li>
+</ul>
+<h3 id="flags">Flags</h3>
+<ul>
+<li><code>CF: Carry Flag</code> This is set when the operation results in a carry.</li>
+<li><code>PF: Parity Flag</code> This is set when there is even parity in the result (the number of bits that equal <code>1</code> in the result is even).</li>
+<li><code>AF: Auxiliary Flag</code> This is set if the lower nibble has a carry out.</li>
+<li><code>ZF: Zero Flag</code> This is set if the result is zero.</li>
+<li><code>SF: Sign Flag</code> This is set if the result is negative. (This flag always equals the most significant bit of the result, becuase its the sign bit).</li>
+<li><code>OF: Overflow Flag</code> This is set if the result is an invalid two's complement. If we add two positive numbers the result should be positive, and if we add two negative numbers the result should be negative. Anything other than that sets the <code>OF</code>.</li>
+</ul>
+<h3 id="q7a">Q7.A</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">BL</span>, <span class="hljs-number">9FH</span>
+<span class="hljs-keyword">ADD</span> <span class="hljs-built_in">BL</span>, <span class="hljs-number">61H</span>
+</div></code></pre>
+<ul>
+<li>The <code>MOV</code> instruction in 8086 does not affect any flag.</li>
+<li>The <code>ADD</code> instruction affects <code>CF, PF, AF, ZF, SF, and OF</code>.</li>
+</ul>
+<p>The result of the addition is <code>9fh + 61h = 100h</code>.</p>
+<ul>
+<li>Note that the <code>1</code> is a carry, which sets the <code>CF</code>.</li>
+<li>Without the carry, the result is <code>00</code>. This has <em>zero</em> ones. <em>Zero</em> is an even number and thus, the <code>PF</code> is set.</li>
+<li>The sum of the first digit in each operand <code>F + 1 = 10</code> produces a carry. This sets the <code>AF</code>.</li>
+<li>Without the carry, the result is <code>00</code>. This sets the <code>ZF</code></li>
+<li>The most significant bit of the result is the <code>SF</code>. The <code>SF</code> is zero.</li>
+</ul>
+<p>Keep in mind that the value of BL is now 00</p>
+<p>Flags:</p>
+<table>
+<thead>
+<tr>
+<th>CF</th>
+<th>PF</th>
+<th>AF</th>
+<th>ZF</th>
+<th>SF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q7b">Q7.B</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AL</span>, <span class="hljs-number">23H</span>
+<span class="hljs-keyword">ADD</span> <span class="hljs-built_in">AL</span>, <span class="hljs-number">97H</span>
+</div></code></pre>
+<ul>
+<li><code>MOV</code> affects no flags.</li>
+<li><code>ADD</code> affects <code>CF, PF, AF, ZF, SF, and OF</code>.</li>
+</ul>
+<p>Addition result: <code>23h + 97h = BAh</code></p>
+<ul>
+<li>No carry → <code>CF = 0</code></li>
+<li>Odd number of ones → <code>PF = 0</code></li>
+<li>The summation of the first digit produces no carry → <code>AF = 0</code></li>
+<li>The result is not zero → <code>ZF = 0</code></li>
+<li>The result is negative → <code>SF = 1</code></li>
+</ul>
+<p>Flags:</p>
+<table>
+<thead>
+<tr>
+<th>CF</th>
+<th>PF</th>
+<th>AF</th>
+<th>ZF</th>
+<th>SF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q7c">Q7.C</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">DX</span>, <span class="hljs-number">10FFH</span>
+<span class="hljs-keyword">ADD</span> <span class="hljs-built_in">DX</span>, <span class="hljs-number">1H</span>
+</div></code></pre>
+<p>Addition result: <code>10FFh + 1h = 1100h</code></p>
+<ul>
+<li>No carry → <code>CF = 0</code></li>
+<li>Even number of ones <code>PF = 1</code></li>
+<li>The summation of the first digit produces a carry → <code>AF = 1</code></li>
+<li>The result is not zero → <code>ZF = 0</code></li>
+<li>The result is not negative → <code>SF = 0</code></li>
+<li>A positive result is obtained from the addition two positive numbers → <code>OF = 0</code></li>
+</ul>
+<p>Flags:</p>
+<table>
+<thead>
+<tr>
+<th>CF</th>
+<th>PF</th>
+<th>AF</th>
+<th>ZF</th>
+<th>SF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="q7-summary">Q7 Summary</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CF</th>
+<th>PF</th>
+<th>AF</th>
+<th>ZF</th>
+<th>SF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Point A</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Point B</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Point C</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="q8">Q8</h2>
+<p>Assume that the registers have the following values (all in hex) and that <code>CS=1000, DS = 2000, SS = 3000, SI = 4000, DI : 5000, BX = 6080, BP = 7000, AX=25FF, CX = 8791, and DX = 1299</code>. Calculate the physical address of the memory where the operand is stored and the contents of the memory locations in each of the following addressing examples.</p>
+<h3 id="required-concepts">Required Concepts</h3>
+<ul>
+<li>8086 addressing modes.</li>
+<li>Physical and logical address conversions.</li>
+</ul>
+<h3 id="addressing-modes">Addressing Modes</h3>
+<p>The 8086 has 7 addressing modes:
+<img src="image.png" alt="8086 Addressing Modes"></p>
+<h3 id="solution">Solution</h3>
+<h3 id="q8a">Q8.A</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; AX = 25FFh</span>
+<span class="hljs-comment">; SI = 4000h</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">SI</span>], <span class="hljs-built_in">AL</span>
+</div></code></pre>
+<ul>
+<li>The <code>AL</code> register has <code>FFh</code> stored.</li>
+<li>The <code>SI</code> is an offset relative to the data segment</li>
+<li>This is the register indirect addressing mode.</li>
+<li>The 8086 gets the data from <code>AL</code>→<code>FFh</code>, and stores the result in <code>DS:SI</code></li>
+<li>This means that <code>2000:4000</code> now contains <code>FFh</code>.
+<ul>
+<li>The physical address is <code>(2000h * 10h) + 4000 = 24000h</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="q8b">Q8.B</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; SI = 4000h</span>
+<span class="hljs-comment">; BX = 6080h</span>
+<span class="hljs-comment">; AX = 25FFh</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">SI</span>+<span class="hljs-built_in">BX</span>+<span class="hljs-number">8</span>], <span class="hljs-number">AH</span>
+</div></code></pre>
+<ul>
+<li>The <code>AH</code> register has <code>25h</code> stored.</li>
+<li>The <code>SI</code> is an offset relative to the data segment</li>
+<li>This is the based indexed relative addressing mode.</li>
+<li>The 8086 gets the data from <code>AH</code>→<code>25h</code>, and stores the result in <code>DS:(SI+BX+displacement)</code></li>
+<li>This means that <code>2000:(4000+6080+8)</code> now contains <code>25h</code>
+<ul>
+<li>Physical address: <code>2A088h</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="q8c">Q8.C</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; BX = 6080h</span>
+<span class="hljs-comment">; AX = 25FFh</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">BX</span>], <span class="hljs-built_in">AX</span>
+</div></code></pre>
+<p>Just like <strong>Q8.A</strong> but with a 16-bit register.</p>
+<ul>
+<li><code>DS:BX</code> → <code>2000:6080</code></li>
+<li><code>[26080h] = FFh</code></li>
+<li><code>[26081h] = 25h</code></li>
+</ul>
+<h3 id="q8d">Q8.D</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; DI = 5000h</span>
+<span class="hljs-comment">; BX = 6080h</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">DI</span>+<span class="hljs-number">6</span>], <span class="hljs-built_in">BX</span>
+</div></code></pre>
+<ul>
+<li>This is the index relative addressing mode.</li>
+<li>Store <code>BX</code> in <code>DS:DI+6</code>
+<ul>
+<li><code>2000:5006</code>→<code>25006h</code></li>
+<li><code>25006</code>→<code>80h</code></li>
+<li><code>25007</code>→<code>60h</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="q8e">Q8.E</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; DI = 5000h</span>
+<span class="hljs-comment">; BX = 6080h</span>
+<span class="hljs-comment">; CX = 8791h</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">DI</span>][<span class="hljs-built_in">BX</span>]+<span class="hljs-number">28</span>, <span class="hljs-built_in">CX</span>
+</div></code></pre>
+<ul>
+<li>This is the based index relative addressing mode.</li>
+<li>Similar to <strong>Q8.B</strong>, but with a 16 bit register.</li>
+<li>Store <code>CX</code> in <code>DS:SI+BX+28</code></li>
+<li><code>DS:SI+BX+28</code>→<code>2000:4000+6080+28</code>→<code>2A0A8h</code></li>
+<li><code>2A0A8h</code>→<code>91h</code></li>
+<li><code>2A0A9h</code>→<code>87h</code></li>
+</ul>
+<h3 id="q8f">Q8.F</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">; BP = 7000h</span>
+<span class="hljs-comment">; SI = 4000h</span>
+<span class="hljs-comment">; DX = 1299h</span>
+<span class="hljs-keyword">MOV</span> [<span class="hljs-built_in">BP</span>][<span class="hljs-built_in">SI</span>]+<span class="hljs-number">10</span>, <span class="hljs-built_in">DX</span>
+</div></code></pre>
+<ul>
+<li>This is the based index relative addressing mode.</li>
+<li>The offset in the <code>BP</code> is relative to the stack segment.
+<ul>
+<li>This is very important.</li>
+</ul>
+</li>
+<li>Store <code>DX</code> in <code>SS:BP+SI+10</code></li>
+<li><code>SS:BP+SI+10</code>→<code>3000:7000+4000+10</code>→<code>3B010h</code></li>
+<li><code>3B010h</code>→<code>99h</code></li>
+<li><code>3B011h</code>→<code>12h</code></li>
+</ul>
+<h3 id="q8-summary">Q8 Summary</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Q</th>
+<th style="text-align:center">Physical Address</th>
+<th style="text-align:center">Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">A</td>
+<td style="text-align:center">24000h</td>
+<td style="text-align:center">FFh</td>
+</tr>
+<tr>
+<td style="text-align:center">B</td>
+<td style="text-align:center">2A088h</td>
+<td style="text-align:center">25h</td>
+</tr>
+<tr>
+<td style="text-align:center">C</td>
+<td style="text-align:center">26080h<br>26081h</td>
+<td style="text-align:center">FFh<br>25h</td>
+</tr>
+<tr>
+<td style="text-align:center">D</td>
+<td style="text-align:center">25006h<br>25007h</td>
+<td style="text-align:center">80h<br>60h</td>
+</tr>
+<tr>
+<td style="text-align:center">E</td>
+<td style="text-align:center">2A0A8h<br>2A0A9h</td>
+<td style="text-align:center">91h<br>87h</td>
+</tr>
+<tr>
+<td style="text-align:center">F</td>
+<td style="text-align:center">3B010h<br>3B011h</td>
+<td style="text-align:center">99h<br>12h</td>
+</tr>
+</tbody>
+</table>
+<h2 id="question-9">Question 9</h2>
+<p>Make the following programs in <code>ARM Assembly</code>, for the Cortex M3 platform.</p>
+<ul>
+<li>Calculate the sum of the first ten numbers of Fibonacci series. Store the result in <code>r0</code>.</li>
+<li>Calculate the sum of the numbers 1: <code>N</code> where <code>N</code> is stored in <code>r1</code>. Store the result in <code>r0</code>.</li>
+</ul>
+<h4 id="required-concepts">Required Concepts</h4>
+<ul>
+<li>The <code>MOV</code> command.</li>
+<li>The <code>ldr</code> command.</li>
+<li>The <code>ADD</code> command.</li>
+<li>Loops in Assembly.</li>
+</ul>
+<p>Keep in mind that <code>ARM Assembly</code> instructions must be indented by at least one space.</p>
+<h4 id="the-mov-command">The <code>MOV</code> Command</h4>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">MOV </span><span class="hljs-built_in">r0</span>, <span class="hljs-built_in">r1</span>     <span class="hljs-comment">; The contents of r1 are now in r0.</span>
+    <span class="hljs-keyword">MOV </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#123</span>   <span class="hljs-comment">; Decimal value 123 is now in r0.</span>
+    <span class="hljs-keyword">MOV </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#0xFA</span>  <span class="hljs-comment">; 0xFA is now in r0.</span>
+</div></code></pre>
+<p>There are some special considerations when moving immediates into registers, consider the following command:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">MOV </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#0xFACEB00C</span> <span class="hljs-comment">; Illegal Instrucion ?!</span>
+</div></code></pre>
+<p>Due to some restrictions in the arm instructions, the immediates that can be <code>MOV</code>ed into registers need to follow some rules:</p>
+<ol>
+<li>Any 8-bit immediate value, giving a range of 0x0-0xFF (0-255).</li>
+<li>Any 8-bit immediate value, shifted left by any number.</li>
+<li>Any 8-bit pattern duplicated in all four bytes of a register.</li>
+<li>Any 8-bit pattern duplicated in bytes 0 and 2, with bytes 1 and 3 set to 0.</li>
+<li>Any 8-bit pattern duplicated in bytes 1 and 3, with bytes 0 and 2 set to 0</li>
+</ol>
+<p>A simple solution is to use the <code>ldr</code> command instead, which can load a register with a 32 bit value, or an address.</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">ldr </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">=0xFACEB00C</span> <span class="hljs-comment">; Works just fine.</span>
+</div></code></pre>
+<h3 id="the-add-command">The <code>Add</code> Command</h3>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">add </span><span class="hljs-built_in">r0</span>, <span class="hljs-built_in">r1</span>, <span class="hljs-built_in">r2</span> <span class="hljs-comment">; r0 now contains the sum of r1 and r2</span>
+    <span class="hljs-keyword">add </span><span class="hljs-built_in">r0</span>, <span class="hljs-built_in">r1</span>, <span class="hljs-number">#2</span> <span class="hljs-comment">; r0 is now r1 + 2</span>
+    <span class="hljs-keyword">add </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#2</span>, <span class="hljs-built_in">r1</span> <span class="hljs-comment">; Invalid instruction. The immediate must come second.</span>
+    <span class="hljs-keyword">add </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#1</span>, <span class="hljs-number">#2</span> <span class="hljs-comment">; Invalid instruction. Can't add two immediates.</span>
+</div></code></pre>
+<h3 id="assembly-loops">Assembly Loops</h3>
+<p>The normal for loop we are all familiar with does not exist in neither the x86 nor the ARM Assembly. Instead, we have <em>&quot;conditional branches&quot;</em></p>
+<p>Based on a condition that occurs (the status of a certain flag of the programmer's choice) a branch is (or is not) executed.  Consider the following:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">; ARM Assembly loop demonstration. This loop runs r2 times.</span>
+
+    <span class="hljs-keyword">mov </span><span class="hljs-built_in">r2</span>, <span class="hljs-number">#3</span> <span class="hljs-comment">; Load the decimal value 3 into r0</span>
+               <span class="hljs-comment">; This will be our loop counter.</span>
+
+    <span class="hljs-keyword">mov </span><span class="hljs-built_in">r0</span>, <span class="hljs-number">#0</span> <span class="hljs-comment">; Initialize the r0 register.</span>
+
+<span class="hljs-symbol">loop_start</span> <span class="hljs-comment">; This is a label.</span>
+           <span class="hljs-comment">; This is not an instruction.</span>
+           <span class="hljs-comment">; Labels are not indented.</span>
+
+    dummy instruction <span class="hljs-number">1</span>
+    dummy instruction <span class="hljs-number">2</span>
+    dummy instruction <span class="hljs-number">3</span>
+
+    <span class="hljs-comment">; Now, based on what happens on your code, some flags will change.</span>
+    <span class="hljs-comment">; Use the conditions that you see fit to select the optimal</span>
+    <span class="hljs-comment">; branching instruction.</span>
+
+    <span class="hljs-keyword">subs </span><span class="hljs-built_in">r2</span>, <span class="hljs-number">#1</span>    <span class="hljs-comment">; Decrement r2.</span>
+                   <span class="hljs-comment">; Any command suffixed by an "s" affects the flags.</span>
+                   <span class="hljs-comment">; We want to go back to our loop_start label if the</span>
+                   <span class="hljs-comment">; counter (the r2 register) is not equal to zero.</span>
+
+    <span class="hljs-keyword">bne </span>loop_start <span class="hljs-comment">; The branch not equal "bne" command jumps to the</span>
+                   <span class="hljs-comment">; label if the zero flag is not set.</span>
+</div></code></pre>
+<h3 id="q9a">Q9.A</h3>
+<p>Calculate the sum of the first ten numbers of Fibonacci series. Store the result in <code>r0</code>.</p>
+<h4 id="solution">Solution</h4>
+<p>Each number in the Fibonacci series is equal to the sum of the two numbers before it.</p>
+<p>The series starts with 0, 1.</p>
+<p>We need to first calculate the <em>ith</em> fibbonaci number, then, accumulate it in the r0 register.</p>
+<h3 id="q9b">Q9.B</h3>
+<p>Calculate the sum of the numbers 1: <code>N</code> where <code>N</code> is stored in <code>r1</code>. Store the result in <code>r0</code>.</p>
+<h4 id="solution">Solution</h4>
+<p>We use a counter to count the number of iterations in a loop. We also accumulate said counter in the r0 register. This can be easily done by loading a register with the <code>N</code> value and looping in reverse.</p>
+
+</body>
+</html>
