@@ -58,7 +58,7 @@ This is a valid instruction. This moves 9516 to [81]
 ``` x86asm
 MOV CS, 3490
 ```
-This is not a valid instruction. The `CS` is the **c**ode **s**egment register. Segment registers **Can NOT** be loaded with immediate values. Load the immediate value you want in a general purpose register first, then `MOV` that value into the desired segment register. Also, any number in assembly should be suffixed according to its base (binary, decimal, or hexadecimal).
+This is not a valid instruction. The `CS` is the **c**ode **s**egment register. Not only that segment registers **Can NOT** be loaded with immediate values, the `CS` is special, we can not modify it unless we use `CALL`, or a far jump.
 
 #### Q2.G
 ``` x86asm
@@ -89,7 +89,7 @@ This is not a valid instruction. The `AX` register is a 16 bit register. It can 
 ``` x86asm
 MOV CS, BH
 ```
-This instruction is invalid. While we are using a register to load the segment register, the register used is an 8 bit register. Segment registers are 16 bit registers. The `MOV` command requires its operands to be of the same size.
+CS can only be modified with a far JMP or CALL.
 
 #### Q2.L
 ``` x86asm
@@ -105,12 +105,12 @@ This instruction is invalid. The `MOV` command requires its operands to be of th
 | C | No | 1. Trying to load a segment register with an immediate value. <br> 2. No suffix for the immediate value. |
 | D | Yes | - |
 | E | Yes | - |
-| F | No | 1. Trying to load a segment register with an immediate value. <br> 2. No suffix for the immediate value. |
+| F | No | 1. Trying to load a segment register with an immediate value.<br>2. Can't MOV into CS. <br> 3. No suffix for the immediate value. |
 | G | Yes | - |
 | H | Yes | - |
 | I | No | The `MOV` command requires its operands to be of the same size. |
 | J | No | 1. Trying to fit a 20 bit number into a 16 bit register. <br> 2. No suffix for the immediate value. |
-| K | No | The `MOV` command requires its operands to be of the same size. |
+| K | No | 1. The `MOV` command requires its operands to be of the same size.<br>2. Cant `MOV` into `CS` |
 | L | No | The `MOV` command requires its operands to be of the same size. |
 
 ## Question 3
@@ -488,8 +488,8 @@ MOV [DI][BX]+28, CX
 - Similar to **Q8.B**, but with a 16 bit register.
 - Store `CX` in `DS:SI+BX+28`
 - `DS:SI+BX+28`&rarr;`2000:4000+6080+28`&rarr;`2A0A8h`
-- `2A0A8h`&rarr;`91h`
-- `2A0A9h`&rarr;`87h`
+- `2B0A8h`&rarr;`91h`
+- `2B0A9h`&rarr;`87h`
 
 ### Q8.F
 ```x86asm
@@ -513,7 +513,7 @@ MOV [BP][SI]+10, DX
 |B|2A088h|25h|
 |C|26080h<br>26081h|FFh<br>25h|
 |D|25006h<br>25007h|80h<br>60h|
-|E|2A0A8h<br>2A0A9h|91h<br>87h|
+|E|2B0A8h<br>2B0A9h|91h<br>87h|
 |F|3B010h<br>3B011h|99h<br>12h|
 
 ## Question 9

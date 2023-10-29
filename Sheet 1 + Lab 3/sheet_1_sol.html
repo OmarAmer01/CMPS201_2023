@@ -408,7 +408,7 @@ code {
 <h4 id="q2f">Q2.F</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CS</span>, <span class="hljs-number">3490</span>
 </div></code></pre>
-<p>This is not a valid instruction. The <code>CS</code> is the <strong>c</strong>ode <strong>s</strong>egment register. Segment registers <strong>Can NOT</strong> be loaded with immediate values. Load the immediate value you want in a general purpose register first, then <code>MOV</code> that value into the desired segment register. Also, any number in assembly should be suffixed according to its base (binary, decimal, or hexadecimal).</p>
+<p>This is not a valid instruction. The <code>CS</code> is the <strong>c</strong>ode <strong>s</strong>egment register. Not only that segment registers <strong>Can NOT</strong> be loaded with immediate values, the <code>CS</code> is special, we can not modify it unless we use <code>CALL</code>, or a far jump.</p>
 <h4 id="q2g">Q2.G</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">DS</span>, <span class="hljs-built_in">BX</span>
 </div></code></pre>
@@ -428,7 +428,7 @@ code {
 <h4 id="q2k">Q2.K</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">CS</span>, <span class="hljs-number">BH</span>
 </div></code></pre>
-<p>This instruction is invalid. While we are using a register to load the segment register, the register used is an 8 bit register. Segment registers are 16 bit registers. The <code>MOV</code> command requires its operands to be of the same size.</p>
+<p>CS can only be modified with a far JMP or CALL.</p>
 <h4 id="q2l">Q2.L</h4>
 <pre class="hljs"><code><div><span class="hljs-keyword">MOV</span> <span class="hljs-built_in">AX</span>, <span class="hljs-built_in">DL</span>
 </div></code></pre>
@@ -471,7 +471,7 @@ code {
 <tr>
 <td style="text-align:center">F</td>
 <td style="text-align:center">No</td>
-<td style="text-align:center">1. Trying to load a segment register with an immediate value. <br> 2. No suffix for the immediate value.</td>
+<td style="text-align:center">1. Trying to load a segment register with an immediate value.<br>2. Can't MOV into CS. <br> 3. No suffix for the immediate value.</td>
 </tr>
 <tr>
 <td style="text-align:center">G</td>
@@ -496,7 +496,7 @@ code {
 <tr>
 <td style="text-align:center">K</td>
 <td style="text-align:center">No</td>
-<td style="text-align:center">The <code>MOV</code> command requires its operands to be of the same size.</td>
+<td style="text-align:center">1. The <code>MOV</code> command requires its operands to be of the same size.<br>2. Cant <code>MOV</code> into <code>CS</code></td>
 </tr>
 <tr>
 <td style="text-align:center">L</td>
@@ -1103,8 +1103,8 @@ code {
 <li>Similar to <strong>Q8.B</strong>, but with a 16 bit register.</li>
 <li>Store <code>CX</code> in <code>DS:SI+BX+28</code></li>
 <li><code>DS:SI+BX+28</code>→<code>2000:4000+6080+28</code>→<code>2A0A8h</code></li>
-<li><code>2A0A8h</code>→<code>91h</code></li>
-<li><code>2A0A9h</code>→<code>87h</code></li>
+<li><code>2B0A8h</code>→<code>91h</code></li>
+<li><code>2B0A9h</code>→<code>87h</code></li>
 </ul>
 <h3 id="q8f">Q8.F</h3>
 <pre class="hljs"><code><div><span class="hljs-comment">; BP = 7000h</span>
@@ -1156,7 +1156,7 @@ code {
 </tr>
 <tr>
 <td style="text-align:center">E</td>
-<td style="text-align:center">2A0A8h<br>2A0A9h</td>
+<td style="text-align:center">2B0A8h<br>2B0A9h</td>
 <td style="text-align:center">91h<br>87h</td>
 </tr>
 <tr>
